@@ -1,0 +1,7 @@
+project:
+  package: simple_app
+  description: MARTe2CUE Project
+  output: ../build/simple_app.json
+  application: App
+  
+

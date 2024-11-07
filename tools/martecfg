@@ -1,0 +1,175 @@
+#! /bin/bash
+
+println () {
+  printf "%s\n" "$@"
+}
+
+help_help () {
+  println "martecfg 'help' command usage:"\
+          "  martecfg help [command]"\
+          ""\
+          "Available Commands:"\
+          "  help this help"\
+          "  init    initialize a project"\
+          "  build   build a project"\
+          "  update  update dependencies"
+}
+
+help_init () {
+  println "martecfg 'init' command will initialize a MARTeCFG project and automatically add the needed files and structures."\
+          "It will also initialize a git project."\
+          ""\
+          "martecfg 'init' command usage:"\
+          "  martecfg init PROJECT_NAME" \
+          ""\
+          "Options:"\
+          "  --app APP_NAME         app name"
+}
+
+help_update () {
+  println "martecfg 'update' will update current MARTe2CUE definitions and dependencies"\
+          ""\
+          "martecfg 'build' command usage:"\
+          "  martecfg update [OPTIONS]"\
+          ""\
+          "Options:"\
+          "  --env ENVIRONMENT_FILE  environment file"
+}
+
+help_build () {
+  println "martecfg 'build' will build a MARTeCFG project and create a MARTe json configuration file."\
+          ""\
+          "martecfg 'build' command usage:"\
+          "  martecfg build [OPTIONS]"\
+          ""\
+          "Options:"\
+          "  --cue CUE_PATH          cue executable path (default included)"\
+          "  --log {DEBUG,INFO,WARNING,ERROR,CRITICAL}"\
+          "                          log level (default 'WARNING')"\
+          "  --env ENVIRONMENT_FILE  environment file"\
+          "  --out OUTPUT_FILE       output file"\
+          "  --update_only           only update dependencies"\
+          "  --compile_only          only build project without updating"
+}
+
+declare -A commands=( [help]=cfg_help  [init]=cfg_init [build]=cfg_build [update]=cfg_update )
+declare -A helps=( [help]=help_help [init]=help_init [build]=help_build [update]=help_update)
+CWD=$(dirname "$0")
+CWD=$(realpath "$CWD")
+CUE=cue
+
+if ! [ -x "$(command -v cue)" ]; then 
+  CUE=$CWD/commands/cue/cue
+fi
+
+cfg_help () {  
+  if [ $# -eq 0 ]; then 
+    echo "martecfg helps to initalize, build and configure MARTe cue projects"
+    echo "Usage:"
+    echo "  martecfg [command]"
+    echo ""
+    echo "Available Commands:"
+    echo "  help    this help"
+    echo "  init    initialize a project"
+    echo "  build   build a project"
+    echo ""
+    echo "For more information use the help:"
+    echo "  martecfg help [command]"
+  elif [ $# -eq 1 ]; then 
+    cmd=${helps["$1"]}
+    if [ -z "$cmd" ]; then
+      echo "wrong argument for help command"
+      cfg_help "help"
+      exit 1
+    else
+      $cmd
+      exit
+    fi
+  else 
+    echo "wrong number of arguments for help command"
+    cfg_help "help"
+    exit 1
+  fi
+  
+}
+
+cfg_init () {
+  if [ $# -lt 1 ] || [ $# -gt 3 ]; then 
+    echo "wrong argument for init"
+    cfg_help init
+    exit 1
+  fi
+  APP="RTApp"
+  if [ $# -eq 3 ]; then
+    if [ "$2" == "--app" ]; then
+      echo "wrong argument for init"
+      cfg_help init
+      exit 1
+    fi
+    APP="$3"
+  fi
+  echo "Initializing project $1"
+  mkdir "./source"
+  mkdir "./build"
+  println "project:"\
+          "  package: $1"\
+          "  description: MARTe2CUE Project" \
+          "  output: ../build/$1.json" \
+          "" >> source/project.yml
+  
+  (cd source && $CUE mod init "marte.org/$1" && cd ..) || exit 1
+  echo "*" > source/cue.mod/pkg/.gitignore
+  mkdir 'source/cue.mod/pkg/marte.org'
+  cp -r "$CWD/../definitions" "source/cue.mod/pkg/marte.org/MARTe"
+  println "package $1" ""\
+          "import (\"marte.org/MARTe\")" ""\
+          "$APP: MARTe.#RealTimeApplication & {"\
+          "  Data: {}"\
+          "  Functions: {}"\
+          "  States: {}"\
+          "  Scheduler: {}"\
+          "}" >> "source/$1.cue"
+  echo "# $1" > README.md
+  if [ $# -gt 1 ] && [ "$2" == "--git" ]; then 
+    git init .
+    git add "*"
+    git commit -am "feat: created project $1"
+  fi
+}
+
+cfg_update () {
+  if [ -d "source/cue.mod/pkg/marte.org/MARTe" ] && [ -d "$CWD/../definitions" ]; then
+    rm -rf "source/cue.mod/pkg/marte.org/MARTe"
+    cp -r "$CWD/../definitions" "source/cue.mod/pkg/marte.org/MARTe"
+    python3 "$CWD/commands/build" "source/" "--update_only" "${@:1}"
+  else
+    echo "not a MARTe2CUE project"
+    exit 1
+  fi
+}
+
+cfg_build () {
+  # if git rev-parse --git-dir > /dev/null 2>&1; then
+    # cd "$(git rev-parse --show-toplevel)" || exit 1
+  if [ -d "source" ]; then 
+    python3 "$CWD/commands/build" "$@" source
+  else
+    echo "source folder not found"
+  fi
+}
+
+if [ $# -eq 0 ]; then
+  echo "missing argument"
+  cfg_help
+  exit 1
+fi
+
+cmd=${commands["$1"]}
+
+if [ -z "$cmd" ]; then
+  echo "wrong argument"
+  cfg_help
+  exit 1
+else
+  $cmd "${@:2}"
+fi

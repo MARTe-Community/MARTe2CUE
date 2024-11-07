@@ -1,0 +1,155 @@
+# SDN Packet definition. From PLC to FC
+# Any line starting with a # will be ignored
+# Unique Name, Type, Size, Default Value, Comment/Extra
+# PLC SDN Header
+N_Reals,uint8,1,60,Number of reals
+N_Integer,uint8,1,4,Number of integer values
+N_Cmds,uint8,1,27,Number of commands
+N_States,uint8,1,25,Number of states
+N_Alarms,uint8,1,24,Number of alarms (bits)
+Spare_Bytes,uint8,3,,Spare bytes
+#Reals/Floats
+EC-GN-P01-GA-CCPS:Amplitude,float32,1,NA,V
+EC-GN-P01-GA-CCPS:Amplitude_Max_Delta,float32,1,NA,Protection on the waveform. V
+EC-GN-P01-GA-CCPS:Curr_Prot_Det_Time,float32,1,NA,0 to 2 s
+EC-GN-P01-GA-CCPS:Current_Protection,float32,1,NA,105% to 110% of current value (in A)
+EC-GN-P01-GA-CCPS:Frequency,float32,1,NA,Hz
+EC-GN-P01-GA-CCPS:Voltage_Max,float32,1,NA,105% to 110% of voltage value (in V)
+EC-GN-P01-GA-CCPS:Voltage_Min,float32,1,NA,0 to current voltage value (in V)
+EC-GN-P01-GA-FHPS:AC_Current_Max,float32,1,NA,0.5 to 5.5 A
+EC-GN-P01-GA-FHPS:AC_Voltage,float32,1,NA,if ACDC the range is same as the DC one. 0 to 150 V in L range or 0 to 300 V in H range 
+EC-GN-P01-GA-FHPS:AC_Voltage_Max,float32,1,NA,0 to 305 V
+EC-GN-P01-GA-FHPS:AC_Voltage_Min,float32,1,NA,0 to 305 V
+EC-GN-P01-GA-FHPS:AVG_Voltage_Max,float32,1,NA,OVP. Only if ACDC. -474.1 to 474.1
+EC-GN-P01-GA-FHPS:AVG_Voltage_Min,float32,1,NA,UVP. Only if ACDC. -474.1 to 474.1
+EC-GN-P01-GA-FHPS:Current_Peak_Max,float32,1,NA,0.5 to 22 A
+EC-GN-P01-GA-FHPS:Current_Peak_Min,float32,1,NA,-0.5 to -22 A
+EC-GN-P01-GA-FHPS:Current_Trip_Delay,float32,1,NA,How long before tripping (maybe fixed). 0 to 10 s
+EC-GN-P01-GA-FHPS:DC_Current_Max,float32,1,NA,Only if ACDC. 0.35 to 3.85 A
+EC-GN-P01-GA-FHPS:DC_Voltage,float32,1,NA,Not sure if Japaneses use the AC or ACDC mode. 0 to 215 V in L range or 0 to 430 V in H range
+EC-GN-P01-GA-FHPS:DC_Voltage_Max,float32,1,NA,Only if ACDC. -431 to 431
+EC-GN-P01-GA-FHPS:DC_Voltage_Min,float32,1,NA,Only if ACDC. -431 to 431
+EC-GN-P01-GA-FHPS:Frequency,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GA-FHPS:Frequency_Max,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GA-FHPS:Frequency_Min,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GA-FHPS:Intern_Prot_Delay,float32,1,NA,Sets the time that must elapse after the internal semiconductor protection is activated before an alarm is generated (maybe fixed). 1 to 3 s
+EC-GN-P01-GA-FHPS:RMS_Voltage_Max,float32,1,NA,OVP. 0 to 474.1 V
+EC-GN-P01-GA-FHPS:RMS_Voltage_Min,float32,1,NA,UVP. 0 to 474.1 V
+EC-GN-P01-GA-GCPS:Current,float32,1,NA,-125 to 125 A
+EC-GN-P01-GA-GCPS:Sweep_Rate,float32,1,NA,0.01 to 99.99 A/min
+EC-GN-P01-GA-MCPS:Current,float32,1,NA,-125 to 125 A
+EC-GN-P01-GA-MCPS:Sweep_Rate,float32,1,NA,0.01 to 99.99 A/min
+EC-GN-P01-GB-CCPS:Amplitude,float32,1,NA,V
+EC-GN-P01-GB-CCPS:Amplitude_Max_Delta,float32,1,NA,Protection on the waveform. V
+EC-GN-P01-GB-CCPS:Curr_Prot_Det_Time,float32,1,NA,0 to 2 s
+EC-GN-P01-GB-CCPS:Current_Protection,float32,1,NA,105% to 110% of current value (in A)
+EC-GN-P01-GB-CCPS:Frequency,float32,1,NA,Hz
+EC-GN-P01-GB-CCPS:Voltage_Max,float32,1,NA,105% to 110% of voltage value (in V)
+EC-GN-P01-GB-CCPS:Voltage_Min,float32,1,NA,0 to current voltage value (in V)
+EC-GN-P01-GB-FHPS:AC_Current_Max,float32,1,NA,0.5 to 5.5 A
+EC-GN-P01-GB-FHPS:AC_Voltage,float32,1,NA,if ACDC the range is same as the DC one. 0 to 150 V in L range or 0 to 300 V in H range 
+EC-GN-P01-GB-FHPS:AC_Voltage_Max,float32,1,NA,0 to 305 V
+EC-GN-P01-GB-FHPS:AC_Voltage_Min,float32,1,NA,0 to 305 V
+EC-GN-P01-GB-FHPS:AVG_Voltage_Max,float32,1,NA,OVP. Only if ACDC. -474.1 to 474.1
+EC-GN-P01-GB-FHPS:AVG_Voltage_Min,float32,1,NA,UVP. Only if ACDC. -474.1 to 474.1
+EC-GN-P01-GB-FHPS:Current_Peak_Max,float32,1,NA,0.5 to 22 A
+EC-GN-P01-GB-FHPS:Current_Peak_Min,float32,1,NA,-0.5 to -22 A
+EC-GN-P01-GB-FHPS:Current_Trip_Delay,float32,1,NA,How long before tripping (maybe fixed). 0 to 10 s
+EC-GN-P01-GB-FHPS:DC_Current_Max,float32,1,NA,Only if ACDC. 0.35 to 3.85 A
+EC-GN-P01-GB-FHPS:DC_Voltage,float32,1,NA,Not sure if Japaneses use the AC or ACDC mode. 0 to 215 V in L range or 0 to 430 V in H range
+EC-GN-P01-GB-FHPS:DC_Voltage_Max,float32,1,NA,Only if ACDC. -431 to 431
+EC-GN-P01-GB-FHPS:DC_Voltage_Min,float32,1,NA,Only if ACDC. -431 to 431
+EC-GN-P01-GB-FHPS:Frequency,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GB-FHPS:Frequency_Max,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GB-FHPS:Frequency_Min,float32,1,NA,1 to 999.9 Hz
+EC-GN-P01-GB-FHPS:Intern_Prot_Delay,float32,1,NA,Sets the time that must elapse after the internal semiconductor protection is activated before an alarm is generated (maybe fixed). 1 to 3 s
+EC-GN-P01-GB-FHPS:RMS_Voltage_Max,float32,1,NA,OVP. 0 to 474.1 V
+EC-GN-P01-GB-FHPS:RMS_Voltage_Min,float32,1,NA,UVP. 0 to 474.1 V
+EC-GN-P01-GB-GCPS:Current,float32,1,NA,-125 to 125 A
+EC-GN-P01-GB-GCPS:Sweep_Rate,float32,1,NA,0.01 to 99.99 A/min
+EC-GN-P01-GB-MCPS:Current,float32,1,NA,-125 to 125 A
+EC-GN-P01-GB-MCPS:Sweep_Rate,float32,1,NA,0.01 to 99.99 A/min
+#Integers
+EC-GN-P01-GA-CCPS:PSU2320-IREF-H,int16,1,NA,CCPS_A current alarm high threshold. %
+EC-GN-P01-GA-CCPS:PSU2320-IREF-L,int16,1,NA,CCPS_A current alarm low threshold. %
+EC-GN-P01-GB-CCPS:PSU2320-IREF-H,int16,1,NA,CCPS_B current alarm high threshold. %
+EC-GN-P01-GB-CCPS:PSU2320-IREF-L,int16,1,NA,CCPS_B current alarm low threshold. %
+#Commands
+EC-GN-P01-GAB-FCT:ABORT_CMD,uint8,1,NA,SM - Fast Controller Abort command. 16#88
+EC-GN-P01-GAB-FCT:LOAD_CMD,uint8,1,NA,SM - Fast Controller Load command. 1=Start 3=Reset
+EC-GN-P01-GAB-FCT:STBY_WAITTRIG_ONLINE,uint8,1,NA,SM - Go to STANDBY, Go to WAIT TRIGGER, Go to ONLINE. 16#22=Standby 16#33=Wait trigger 16#FF=Online
+EC-GN-P01-GAB-FCT:START_POWER_CMD,uint8,1,NA,SM - START power command channel. 16#DD
+EC-GN-P01-GAB-FCT:STOP_POWER_CMD,uint8,1,NA,SM - STOP power command channel. 16#EE
+EC-GN-P01-GAB-FCT:SUSPEND_RESUME_CMD,uint8,1,NA,SM - suspend and resume channel. 16#AA=Suspend 16#77=Resume
+EC-GN-P01-GAB-FCT:SEGREGATION_CMD,uint8,1,NA,SM - Segregation Channel - Detect when the alarm rises and send the correct command to FC to try to synchronize it. 16#CC=Release control 16#BB=Take control
+EC-GN-P01-GA-CCPS:OPERATION_CMD,uint8,1,NA,CCPS_A Operation request START/SUSPEND. 1=Start 2=Suspend
+EC-GN-P01-GA-CCPS:CONFIG_SEQ_CMD,uint8,1,NA,CCPS_A Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GA-FHPS:RAMP_CMD,uint8,1,NA,FHPS_A Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GA-FHPS:CONFIG_SEQ_CMD,uint8,1,NA,FHPS_A Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GA-MCPS:RAMP_CMD,uint8,1,NA,SCMM_A Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GA-MCPS:CONFIG_CMD,uint8,1,NA,SCMM_A Configuration request. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GA-MCPS:HOLD_CMD,uint8,1,NA,SCMM_A Hold request. 1=Start 2=Suspend
+EC-GN-P01-GA-GCPS:RAMP_CMD,uint8,1,NA,GCPS_A Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GA-GCPS:CONFIG_CMD,uint8,1,NA,GCPS_A Configuration request. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GA-GCPS:HOLD_CMD,uint8,1,NA,GCPS_A Hold request. 1=Start 2=Suspend
+EC-GN-P01-GB-CCPS:OPERATION_CMD,uint8,1,NA,CCPS_B Operation request START/SUSPEND. 1=Start 2=Suspend
+EC-GN-P01-GB-CCPS:CONFIG_SEQ_CMD,uint8,1,NA,CCPS_B Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GB-FHPS:RAMP_CMD,uint8,1,NA,FHPS_B Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GB-FHPS:CONFIG_SEQ_CMD,uint8,1,NA,FHPS_B Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GB-MCPS:RAMP_CMD,uint8,1,NA,SCMM_B Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GB-MCPS:CONFIG_CMD,uint8,1,NA,SCMM_B Configuration request. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GB-MCPS:HOLD_CMD,uint8,1,NA,SCMM_B Hold request. 1=Start 2=Suspend
+EC-GN-P01-GB-GCPS:RAMP_CMD,uint8,1,NA,GCPS_B Rampup/Rampdown request. 1=Start 2=Suspend
+EC-GN-P01-GB-GCPS:CONFIG_CMD,uint8,1,NA,GCPS_B Configuration request. 1=Start 2=Suspend 3=Reset
+EC-GN-P01-GB-GCPS:HOLD_CMD,uint8,1,NA,GCPS_B Hold request. 1=Start 2=Suspend
+#States
+EC-GN-P01-GAB-SM:SM_OP_STATE,uint8,1,NA,SM - SCU_STATES.MAIN_OP_STATE. 16#1E=Standby 16#3C=Ready 16#69=Wait trigger 16#5A=Online 16#78=configuration
+EC-GN-P01-GA-CCPS:AUTO_MAN_STATE,uint8,1,NA,CCPS_A Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GA-CCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GA-CCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GA-FHPS:AUTO_MAN_STATE,uint8,1,NA,FHPS_A Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GA-FHPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GA-FHPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GA-MCPS:AUTO_MAN_STATE,uint8,1,NA,MCPS_A Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GA-MCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GA-MCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GA-GCPS:AUTO_MAN_STATE,uint8,1,NA,GCPS_A Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GA-GCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GA-GCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GB-CCPS:AUTO_MAN_STATE,uint8,1,NA,CCPS_B Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GB-CCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GB-CCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GB-FHPS:AUTO_MAN_STATE,uint8,1,NA,FHPS_B Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GB-FHPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GB-FHPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GB-MCPS:AUTO_MAN_STATE,uint8,1,NA,MCPS_B Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GB-MCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GB-MCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GB-GCPS:AUTO_MAN_STATE,uint8,1,NA,GCPS_B Auto/Manual State. 16#0=Released 16#1=Auto 16#2=Manual
+EC-GN-P01-GB-GCPS:SYNC_ASYNC_STATE,uint8,1,NA,EC-GN-P01-GB-GCPS:SYNC_ASYNC_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GA-FHPS:Voltage_Range,uint8,1,NA,This could be fixed to one or the other range and not configurable at run time. 0=L(150) 1=H(300)
+EC-GN-P01-GA-FHPS:Current_Prot_Mode,uint8,1,NA,On: Trip, off: switch to CC mode (maybe no need to be configurable and fix to trip). 0=OFF 1=ON
+EC-GN-P01-GA-CCPS:Current_Auto_Prot,uint8,1,NA,Enables or disables the limit on the current setting. 0=OFF 1=ON
+EC-GN-P01-GA-CCPS:Voltage_Auto_Prot,uint8,1,NA,Set whether to limit the voltage setting so that it does not exceed the OVP setting or become lower than the UVP setting.. 0=OFF 1=ON
+EC-GN-P01-GB-FHPS:Voltage_Range,uint8,1,NA,This could be fixed to one or the other range and not configurable at run time. 0=L(150) 1=H(300)
+EC-GN-P01-GB-FHPS:Current_Prot_Mode,uint8,1,NA,On: Trip, off: switch to CC mode (maybe no need to be configurable and fix to trip). 0=OFF 1=ON
+EC-GN-P01-GB-CCPS:Current_Auto_Prot,uint8,1,NA,Enables or disables the limit on the current setting. 0=OFF 1=ON
+EC-GN-P01-GB-CCPS:Voltage_Auto_Prot,uint8,1,NA,Set whether to limit the voltage setting so that it does not exceed the OVP setting or become lower than the UVP setting.. 0=OFF 1=ON
+#Alarms
+EC-GN-P01-GAB-FCT:Fast_Controller_Trip,uint1,1,NA,No description
+Alarm_Send_Spare_1,uint1,1,NA,Not Used
+Alarm_Send_Spare_2,uint1,1,NA,Not Used
+Alarm_Send_Spare_3,uint1,1,NA,Not Used
+Alarm_Send_Spare_4,uint1,1,NA,Not Used
+Alarm_Send_Spare_5,uint1,1,NA,Not Used
+Alarm_Send_Spare_6,uint1,1,NA,Not Used
+Alarm_Send_Spare_7,uint1,1,NA,Not Used
+EC-GN-P01-GA-CCPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GA-FHPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GA-MCPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GA-GCPS:Trip,uint1,1,NA,No description
+Alarm_Send_Spare_12,uint1,1,NA,Not Used
+Alarm_Send_Spare_13,uint1,1,NA,Not Used
+Alarm_Send_Spare_14,uint1,1,NA,Not Used
+Alarm_Send_Spare_15,uint1,1,NA,Not Used
+EC-GN-P01-GB-CCPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GB-FHPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GB-MCPS:Trip,uint1,1,NA,No description
+EC-GN-P01-GB-GCPS:Trip,uint1,1,NA,No description
+Alarm_Send_Spare_20,uint1,1,NA,Not Used
+Alarm_Send_Spare_21,uint1,1,NA,Not Used
+Alarm_Send_Spare_22,uint1,1,NA,Not Used
+Alarm_Send_Spare_23,uint1,1,NA,Not Used

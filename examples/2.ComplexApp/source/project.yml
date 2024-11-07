@@ -1,0 +1,21 @@
+project:
+  package: example
+  description: MARTe2CUE example Project
+  output: ../build/example.json
+  interfaces:
+    PLCSDNPub:
+      mode: PUB
+      interface: eno2
+      address: 11.2.0.10:2000
+      source: interfaces/sdn/output/SDN_CONFIG_FC_TO_PLC.csv
+      output: plc_sdn_publisher.cue
+      patterns:
+        - EC-GN-P01-
+    PLCSDNSub:
+      mode: SUB
+      interface: eno2
+      address: 11.2.0.12:2000
+      source: interfaces/sdn/output/SDN_CONFIG_PLC_TO_FC.csv
+      output: plc_sdn_subscriber.cue
+      patterns:
+        - EC-GN-P01-

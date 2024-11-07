@@ -1,0 +1,5 @@
+project:
+  package: example
+  description: MARTe2CUE Project
+  output: ../build/example.${id}.json
+

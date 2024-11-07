@@ -1,0 +1,125 @@
+# SDN Packet definition. From PLC to FC
+# Any line starting with a # will be ignored
+# Unique Name, Type, Size, Default Value, Comment/Extra
+# PLC SDN Header
+N_Reals,uint8,1,24,Number of reals
+N_Integer,uint8,1,0,Number of integer values
+N_Acks,uint8,1,27,Number of acknowledge
+N_States,uint8,1,36,Number of states
+N_Alarms,uint8,1,24,Number of alarms (bits)
+Spare_Bytes,uint8,3,,Spare bytes
+#Reals/Floats
+Float_Rcv_Spare_0,float32,1,NA,Not Used
+Float_Rcv_Spare_1,float32,1,NA,Not Used
+EC-GN-P01-GA-CCPS:IREF,float32,1,NA,CCPS_A Current Reference
+EC-GN-P01-GA-FHPS:Voltage,float32,1,NA,FHPS_A Voltage
+EC-GN-P01-GA-FHPS:Current,float32,1,NA,FHPS_A Current
+EC-GN-P01-GA-FHPS:IREF,float32,1,NA,FHPS_A Current Reference
+EC-GN-P01-GA-MCPS:Voltage,float32,1,NA,MCPS_A Voltage
+EC-GN-P01-GA-MCPS:Current,float32,1,NA,MCPS_A Current
+EC-GN-P01-GA-MCPS:IREF,float32,1,NA,MCPS_A Current Reference
+EC-GN-P01-GA-GCPS:Voltage,float32,1,NA,GCPS_A Voltage
+EC-GN-P01-GA-GCPS:Current,float32,1,NA,GCPS_A Current
+EC-GN-P01-GA-GCPS:IREF,float32,1,NA,GCPS_A Current Reference
+Float_Spare_12,float32,1,NA,Not Used
+Float_Spare_13,float32,1,NA,Not Used
+EC-GN-P01-GB-CCPS:IREF,float32,1,NA,CCPS_B Current Reference
+EC-GN-P01-GB-FHPS:Voltage,float32,1,NA,FHPS_B Voltage
+EC-GN-P01-GB-FHPS:Current,float32,1,NA,FHPS_B Current
+EC-GN-P01-GB-FHPS:IREF,float32,1,NA,FHPS_B Current Reference
+EC-GN-P01-GB-MCPS:Voltage,float32,1,NA,MCPS_B Voltage
+EC-GN-P01-GB-MCPS:Current,float32,1,NA,MCPS_B Current
+EC-GN-P01-GB-MCPS:IREF,float32,1,NA,MCPS_B Current Reference
+EC-GN-P01-GB-GCPS:Voltage,float32,1,NA,GCPS_B Voltage
+EC-GN-P01-GB-GCPS:Current,float32,1,NA,GCPS_B Current
+EC-GN-P01-GB-GCPS:IREF,float32,1,NA,GCPS_B Current Reference
+#Commands
+ACK_EC-GN-P01-GAB-FCT:ABORT_CMD,uint8,1,NA,SM - Fast Controller Abort command. 16#88
+ACK_EC-GN-P01-GAB-FCT:LOAD_CMD,uint8,1,NA,SM - Fast Controller Load command. 1=Start 3=Reset
+ACK_EC-GN-P01-GAB-FCT:STBY_WAITTRIG_ONLINE,uint8,1,NA,SM - Go to STANDBY, Go to WAIT TRIGGER, Go to ONLINE. 16#22=Standby 16#33=Wait trigger 16#FF=Online
+ACK_EC-GN-P01-GAB-FCT:START_POWER_CMD,uint8,1,NA,SM - START power command channel. 16#DD
+ACK_EC-GN-P01-GAB-FCT:STOP_POWER_CMD,uint8,1,NA,SM - STOP power command channel. 16#EE
+ACK_EC-GN-P01-GAB-FCT:SUSPEND_RESUME_CMD,uint8,1,NA,SM - suspend and resume channel. 16#AA=Suspend 16#77=Resume
+ACK_EC-GN-P01-GAB-FCT:SEGREGATION_CMD,uint8,1,NA,SM - Segregation Channel - Detect when the alarm rises and send the correct command to FC to try to synchronize it. 16#CC=Release control 16#BB=Take control
+ACK_EC-GN-P01-GA-CCPS:OPERATION_CMD,uint8,1,NA,CCPS_A Operation request START/SUSPEND. 1=Start 2=Suspend
+ACK_EC-GN-P01-GA-CCPS:CONFIG_SEQ_CMD,uint8,1,NA,CCPS_A Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GA-FHPS:RAMP_CMD,uint8,1,NA,FHPS_A Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GA-FHPS:CONFIG_SEQ_CMD,uint8,1,NA,FHPS_A Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GA-MCPS:RAMP_CMD,uint8,1,NA,SCMM_A Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GA-MCPS:CONFIG_CMD,uint8,1,NA,SCMM_A Configuration request. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GA-MCPS:HOLD_CMD,uint8,1,NA,SCMM_A Hold request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GA-GCPS:RAMP_CMD,uint8,1,NA,GCPS_A Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GA-GCPS:CONFIG_CMD,uint8,1,NA,GCPS_A Configuration request. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GA-GCPS:HOLD_CMD,uint8,1,NA,GCPS_A Hold request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-CCPS:OPERATION_CMD,uint8,1,NA,CCPS_B Operation request START/SUSPEND. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-CCPS:CONFIG_SEQ_CMD,uint8,1,NA,CCPS_B Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GB-FHPS:RAMP_CMD,uint8,1,NA,FHPS_B Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-FHPS:CONFIG_SEQ_CMD,uint8,1,NA,FHPS_B Configuration Sequence START/SUSPEND/RESET. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GB-MCPS:RAMP_CMD,uint8,1,NA,SCMM_B Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-MCPS:CONFIG_CMD,uint8,1,NA,SCMM_B Configuration request. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GB-MCPS:HOLD_CMD,uint8,1,NA,SCMM_B Hold request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-GCPS:RAMP_CMD,uint8,1,NA,GCPS_B Rampup/Rampdown request. 1=Start 2=Suspend
+ACK_EC-GN-P01-GB-GCPS:CONFIG_CMD,uint8,1,NA,GCPS_B Configuration request. 1=Start 2=Suspend 3=Reset
+ACK_EC-GN-P01-GB-GCPS:HOLD_CMD,uint8,1,NA,GCPS_B Hold request. 1=Start 2=Suspend
+#States
+EC-GN-P01-GAB-FCT:FC_OP_STATE,uint8,1,NA,SM - "FC_STATES".FC_OP_STATE. 16#1E=Standby 16#69=Wait trigger 16#5A=Online 16#4B=Alarm
+EC-GN-P01-GAB-FCT:FC_RT_STATE,uint8,1,NA,SM - "FC_STATES".FC_RT_STATE. 16#1E=Standby 16#5A=Online 16#A5=Power On 16#96=Suspended 16# 87=End
+EC-GN-P01-GAB-FCT:FC_SEG_STATE,uint8,1,NA,SM - "FC_STATES".FC_SEG_STATE. 16#F0=Syncro 16#E1=Asyncro
+EC-GN-P01-GAB-FCT:FC_LOAD_CFG_DONE,uint8,1,NA,Fast Controller Load Configuration done. 0=False 1=Done
+EC-GN-P01-GA-CCPS:IN_OPERATION,uint8,1,NA,CCPS_A in operation. 0=False 1=True
+EC-GN-P01-GA-CCPS:CONFIG_SEQ_STAT,uint8,1,NA,CCPS_A Config. Seq Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GA-CCPS:STAT_UPDATED,uint8,1,NA,CCPS_A Status Updated. 0=False 1=True
+EC-GN-P01-GA-FHPS:RAMP_DONE,uint8,1,NA,FHPS_A Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GA-FHPS:CONFIG_SEQ_STAT,uint8,1,NA,FHPS_A Config. Seq Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GA-FHPS:STAT_UPDATED,uint8,1,NA,FHPS_A Status Updated. 0=False 1=True
+EC-GN-P01-GA-MCPS:RAMP_DONE,uint8,1,NA,SCMM_A Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GA-MCPS:CONFIG_STAT,uint8,1,NA,SCMM_A Configuration Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GA-MCPS:STAT_UPDATED,uint8,1,NA,SCMM_A Status Updated. 0=False 1=True
+EC-GN-P01-GA-MCPS:ERROR_STAT,uint8,1,NA,SCMM_A Error Status. To be defined
+EC-GN-P01-GA-MCPS:STAT,uint8,1,NA,SCMM_A Status. 0=Remote hold 1=Remote set 2=Remote down 3=Remote flat top 4=Remote flat zero 5=Local hold 6=Local set 7=Local down 8=Local flat top 9=Local flat zero
+EC-GN-P01-GA-GCPS:RAMP_DONE,uint8,1,NA,GCPS_A Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GA-GCPS:CONFIG_STAT,uint8,1,NA,GCPS_A Configuration Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GA-GCPS:STAT_UPDATED,uint8,1,NA,GCPS_A Status Updated. 0=False 1=True
+EC-GN-P01-GA-GCPS:ERROR_STAT,uint8,1,NA,GCPS_A Error Status. To be defined
+EC-GN-P01-GA-GCPS:STAT,uint8,1,NA,GCPS_A Status. 0=Remote hold 1=Remote set 2=Remote down 3=Remote flat top 4=Remote flat zero 5=Local hold 6=Local set 7=Local down 8=Local flat top 9=Local flat zero
+EC-GN-P01-GB-CCPS:IN_OPERATION,uint8,1,NA,CCPS_B in operation. 0=False 1=True
+EC-GN-P01-GB-CCPS:CONFIG_SEQ_STAT,uint8,1,NA,CCPS_B Config. Seq Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GB-CCPS:STAT_UPDATED,uint8,1,NA,CCPS_B Status Updated. 0=False 1=True
+EC-GN-P01-GB-FHPS:RAMP_DONE,uint8,1,NA,FHPS_B Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GB-FHPS:CONFIG_SEQ_STAT,uint8,1,NA,FHPS_B Config. Seq Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GB-FHPS:STAT_UPDATED,uint8,1,NA,FHPS_B Status Updated. 0=False 1=True
+EC-GN-P01-GB-MCPS:RAMP_DONE,uint8,1,NA,SCMM_B Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GB-MCPS:CONFIG_STAT,uint8,1,NA,SCMM_B Configuration Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GB-MCPS:STAT_UPDATED,uint8,1,NA,SCMM_B Status Updated. 0=False 1=True
+EC-GN-P01-GB-MCPS:ERROR_STAT,uint8,1,NA,SCMM_B Error Status. To be defined
+EC-GN-P01-GB-MCPS:STAT,uint8,1,NA,SCMM_B Status. 0=Remote hold 1=Remote set 2=Remote down 3=Remote flat top 4=Remote flat zero 5=Local hold 6=Local set 7=Local down 8=Local flat top 9=Local flat zero
+EC-GN-P01-GB-GCPS:RAMP_DONE,uint8,1,NA,GCPS_B Rampup/Rampdown Completed. 0=Inactive 1=Rampup completed 2=Rampdown completed
+EC-GN-P01-GB-GCPS:CONFIG_STAT,uint8,1,NA,GCPS_B Configuration Status. 1=Busy 2=Error 3=Suspended 4=Done
+EC-GN-P01-GB-GCPS:STAT_UPDATED,uint8,1,NA,GCPS_B Status Updated. 0=False 1=True
+EC-GN-P01-GB-GCPS:ERROR_STAT,uint8,1,NA,GCPS_B Error Status. To be defined
+EC-GN-P01-GB-GCPS:STAT,uint8,1,NA,GCPS_B Status. 0=Remote hold 1=Remote set 2=Remote down 3=Remote flat top 4=Remote flat zero 5=Local hold 6=Local set 7=Local down 8=Local flat top 9=Local flat zero
+#Alarms
+EC-GN-P01-GAB-FCT:Fast_Controller_Alarm,uint1,1,NA,Fast Controller Alarm
+Alarm_Rcv_Spare_1,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_2,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_3,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_4,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_5,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_6,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_7,uint1,1,NA,Not Used
+EC-GN-P01-GA-CCPS:Alarm,uint1,1,NA,CCPS_A Alarm
+EC-GN-P01-GA-FHPS:Alarm,uint1,1,NA,FHPS_A Alarm
+EC-GN-P01-GA-MCPS:Alarm,uint1,1,NA,SCMM_A Alarm
+EC-GN-P01-GA-GCPS:Alarm,uint1,1,NA,GCPS_A Alarm
+EC-GN-P01-GA-CCPS:Current_Alarm,uint1,1,NA,EC-GN-P01-GA-CCPS:Current_Alarm
+Alarm_Rcv_Spare_13,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_14,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_15,uint1,1,NA,Not Used
+EC-GN-P01-GB-CCPS:Alarm,uint1,1,NA,CCPS_B Alarm
+EC-GN-P01-GB-FHPS:Alarm,uint1,1,NA,FHPS_B Alarm
+EC-GN-P01-GB-MCPS:Alarm,uint1,1,NA,SCMM_B Alarm
+EC-GN-P01-GB-GCPS:Alarm,uint1,1,NA,GCPS_B Alarm
+EC-GN-P01-GB-CCPS:Current_Alarm,uint1,1,NA,EC-GN-P01-GB-CCPS:Current_Alarm
+Alarm_Rcv_Spare_21,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_22,uint1,1,NA,Not Used
+Alarm_Rcv_Spare_23,uint1,1,NA,Not Used
