@@ -144,6 +144,7 @@ MARTe CUE package, contains the following packages:
 - `MARTe` contains the `MARTe2` core definitions
 - `MARTe/components` contains the `MARTe2-components` definitions
 - `MARTe/extensions` contains the `MARTe-extensions` definitions
+- `MARTe/community` contains the `MARTe-community-components` definitions
 
 ### CUE Language
 
@@ -194,7 +195,7 @@ Something: topic: "value"
 
 #### MARTe Core
 
-To import and use components from **MARTe Core** you should import the module `"iter.org/marte/MARTe"`, the pacakge name (and its namespace) is `MARTe` (the last part of the import).
+To import and use components from **MARTe Core** you should import the module `"marte.org/MARTe"`, the pacakge name (and its namespace) is `MARTe` (the last part of the import).
 
 This package includes all the base definition for MARTe as well as the basic structure of a MARTe application.
 
@@ -250,7 +251,7 @@ DATA_SOURCE_NAME.#.SIGNAL_NAME
 
 #### MARTe Components
 
-To import and use components from **MARTe Components** you should import the module `"iter.org/marte/MARTe/components"`, the pacakge name (and its namespace) is `components`.
+To import and use components from **MARTe Components** you should import the module `"marte.org/MARTe/components"`, the pacakge name (and its namespace) is `components`.
 
 This package includes many GAMs and DataSources of the MARTe Components project.
 
@@ -298,7 +299,7 @@ The list of implemented definition of GAMs is the following
 
 #### MARTe Extensions
 
-To import and use components from **MARTe Extensions** you should import the module `"iter.org/marte/MARTe/extensions"`, the pacakge name (and its namespace) is `extensions`.
+To import and use components from **MARTe Extensions** you should import the module `"marte.org/MARTe/extensions"`, the pacakge name (and its namespace) is `extensions`.
 
 This package includes few GAMs of the MARTe Extensions project.
 
@@ -308,6 +309,23 @@ The list of implemented definition of GAMs is the following
 
 - `extensions.#CompactBitGAM`
 - `extensions.#ExtractBitGAM`
+
+#### MARTe Community Components
+To import and use components from **MARTe Extensions** you should import the module `"marte.org/MARTe/extensions"`, the pacakge name (and its namespace) is `community`.
+
+##### GAMs
+
+ - `community.LuaGAM`
+
+##### DataSources
+
+ - `community.OnChangeLoggerDataSource`
+
+##### Interfaces
+
+ - `community.JSONLogger`
+ - `community.HttpDynamicMessageInterface`
+
 
 ### Example
 
