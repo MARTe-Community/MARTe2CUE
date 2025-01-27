@@ -5,10 +5,10 @@ import "marte.org/MARTe"
 #FileReader: MARTe.#DataSource & {
 	Class:       "FileReader"
 	FileName:    string
-	Interpolate: "yes" | "no"
-	FileFormat:  "binary" | "csv"
+	Interpolate: "yes" | *"no"
+	FileFormat:  "binary" | *"csv"
 	if FileFormat == "csv" {
-		CSVSeparator: string
+		CSVSeparator?: string
 	}
 	if Interpolate == "yes" {
 		XAxisSignal:         string
