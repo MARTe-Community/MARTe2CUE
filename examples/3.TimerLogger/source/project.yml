@@ -1,0 +1,5 @@
+project:
+  package: timerlogger
+  description: MARTe2CUE Project
+  output: ../build/timerlogger.json
+
