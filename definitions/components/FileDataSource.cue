@@ -8,13 +8,14 @@ import "marte.org/MARTe"
 	Interpolate: "yes" | *"no"
 	FileFormat:  "binary" | *"csv"
 	if FileFormat == "csv" {
-		CSVSeparator?: string
+		CSVSeparator: string | *","
 	}
 	if Interpolate == "yes" {
 		XAxisSignal:         string
 		InterpolationPeriod: uint32
 	}
-	EOF?:             "Rewind" | "Error" | "Last"
+	EOF:              *"Rewind" | "Error" | "Last"
+	Preload:          *"yes" | "no"
 	MaxFileByteSize?: uint32
 	Messages?: {
 		Class: "ReferenceContainer"
