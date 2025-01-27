@@ -1,0 +1,5 @@
+project:
+  package: watertank
+  description: MARTe2CUE Project
+  output: ../build/watertank.json
+
