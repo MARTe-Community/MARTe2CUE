@@ -20,9 +20,7 @@ RTApp: MARTe.#RealTimeApplication & {
 		}
 		Timings: MARTe.#TimingDataSource
 	}
-	Scheduler: MARTe.#GAMScheduler & {
-		#source: Data.Timings
-	}
+	Scheduler: #source: Data.Timings
 }
 
 let DBs = RTApp.Data

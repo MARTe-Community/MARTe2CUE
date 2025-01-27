@@ -178,7 +178,7 @@ package MARTe
 		}
 	}
 	States:    #States
-	Scheduler: #GAMSchedulerI
+	Scheduler: #GAMSchedulerI | *#GAMScheduler
 }
 
 [name= !~"^[$_#].*$"]: {
